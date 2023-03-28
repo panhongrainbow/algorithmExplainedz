@@ -1,0 +1,37 @@
+@startuml
+!theme cyborg
+start
+if (len(arr) > elementLenghtFinishEarly) then (yes)
+:Find middle index of the array;
+:Find maximum value in left half of the array recursively;
+:Find maximum value in right half of the array recursively;
+if (temporaryMaxNumRight > temporaryMaxNumLeft) then (yes)
+:temporaryMaxNumLeft = temporaryMaxNumRight;
+endif
+else (no)
+if (len(arr) <= elementLenghtFinishEarly) then (yes)
+:Find maximum value directly;
+else (no)
+:Return an error "Cannot finish in advance";
+endif
+endif
+:Return maximum value and error;
+stop
+
+partition "recursiveMax(arr []int)" {
+:recursiveMax(arr[0:mid]);
+:recursiveMax(arr[mid:]);
+}
+
+partition "finishEarly(arr []int)" {
+if (len(arr) <= 0) then (yes)
+:Return an error "Empty slice";
+else (no)
+if (len(arr) > elementLenghtFinishEarly) then (yes)
+:Return an error "Cannot finish in advance";
+else (no)
+:Find maximum value in the input array;
+endif
+endif
+}
+@enduml

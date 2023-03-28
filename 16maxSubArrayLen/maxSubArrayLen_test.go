@@ -46,8 +46,8 @@ func Test_Check_maxSubArrayLen(t *testing.T) {
 	// The first example uses a simple array of integers to calculate the maximum subarray length with a given sum
 	t.Run("Test for the maxSubArrayLen function", func(t *testing.T) {
 		// Define an array of integers and calculate the maximum subarray length with a given sum
-		num := []int{1, 2, 3, 4, 5, 6}
-		begin, end, length := maxSubArrayLen(num, 12)
+		arr := []int{1, 2, 3, 4, 5, 6}
+		begin, end, length := maxSubArrayLen(arr, 12)
 
 		// Check that the expected subarray length, beginning index and ending index are returned
 		require.Equal(t, 3, length)
@@ -58,8 +58,8 @@ func Test_Check_maxSubArrayLen(t *testing.T) {
 	// The second example uses a more complicated array of integers to calculate the same
 	t.Run("Use a more complicated array", func(t *testing.T) {
 		// The second example uses a more complicated array of integers to calculate the same
-		num := []int{5, 17, -1, 9, -4, 3, 10, 15, -3, 20, 16, 0, 19, 11, -5, 14, 12, -2, 7, 6}
-		begin, end, length := maxSubArrayLen(num, 138)
+		arr := []int{5, 17, -1, 9, -4, 3, 10, 15, -3, 20, 16, 0, 19, 11, -5, 14, 12, -2, 7, 6}
+		begin, end, length := maxSubArrayLen(arr, 138)
 
 		// Check that the expected subarray length, beginning index and ending index are returned
 		require.Equal(t, 18, length)
