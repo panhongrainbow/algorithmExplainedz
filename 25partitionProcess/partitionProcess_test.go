@@ -33,7 +33,9 @@ func partitionProcess(arr []int, pivotValue int) (err error) {
 			*/
 			middleSectionRightBoundary++
 			// Swap the current element with the last second element to the right of the middle section
-			swapArr(arr, i, middleSectionRightBoundary-1)
+			if i != middleSectionRightBoundary-1 {
+				swapArr(arr, i, middleSectionRightBoundary-1)
+			}
 		}
 		if arr[i] < pivotValue {
 			/*
@@ -47,12 +49,16 @@ func partitionProcess(arr []int, pivotValue int) (err error) {
 			*/
 			middleSectionLeftBoundary++
 			// Swap the current element with the previous element to the left of the middle section
-			swapArr(arr, i, middleSectionLeftBoundary-1)
+			if i != middleSectionLeftBoundary-1 {
+				swapArr(arr, i, middleSectionLeftBoundary-1)
+			}
 		}
 		// If the current element is greater than the pivot value,
 		if arr[i] > pivotValue {
 			// Swap the current element with the first element to the left of the rightmost section
-			swapArr(arr, i, rightMostSectionLeftBoundary)
+			if i != rightMostSectionLeftBoundary {
+				swapArr(arr, i, rightMostSectionLeftBoundary)
+			}
 
 			// Move the left boundary of the rightmost section to the left by one position
 			rightMostSectionLeftBoundary--
