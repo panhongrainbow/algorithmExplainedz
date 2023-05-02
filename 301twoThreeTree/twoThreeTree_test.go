@@ -84,7 +84,10 @@ LOOP:
 			if tree.parent.middleNext[len(tree.parent.middleNext)-1] < tree.middleNext[0] {
 				returnValue = tree.middleNext[0]
 				tree.middleNext = tree.middleNext[1:]
-				next = tree.parent
+				tree.parent.middleNext = append(tree.parent.middleNext, returnValue)
+				sort.Ints(tree.parent.middleNext)
+				return
+				// next = tree.parent
 			} else {
 				returnValue = tree.middleNext[len(tree.middleNext)-1]
 				tree.middleNext = tree.middleNext[:len(tree.middleNext)-1]
@@ -131,12 +134,16 @@ func (tree *TwoThreeTree) Direction(value int) (direction int) {
 	return
 }
 
+// Test_Check_twoThreeTree is the test function for twoThreeTree
 func Test_Check_twoThreeTree(t *testing.T) {
 	// Create a new TwoThreeTree
 	root := NewTwoThreeTree(nil)
+	root.leftNext = NewTwoThreeTree(root)
+	root.rightNext = NewTwoThreeTree(root)
 	var rootReturnValue int
 	var err error
 
+	// Insert the values into the TwoThreeTree
 	rootReturnValue, err = root.InsertValue(25)
 	require.NoError(t, err)
 	require.Equal(t, 0, rootReturnValue)
@@ -160,6 +167,14 @@ func Test_Check_twoThreeTree(t *testing.T) {
 	}
 
 	rootReturnValue, err = root.InsertValue(84)
+	require.NoError(t, err)
+	require.Equal(t, 0, rootReturnValue)
+
+	rootReturnValue, err = root.InsertValue(74)
+	require.NoError(t, err)
+	require.Equal(t, 0, rootReturnValue)
+
+	rootReturnValue, err = root.InsertValue(101)
 	require.NoError(t, err)
 	require.Equal(t, 0, rootReturnValue)
 
