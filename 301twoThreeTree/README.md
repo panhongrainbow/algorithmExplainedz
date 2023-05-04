@@ -51,9 +51,18 @@ First set a breakpoint and `observe the situation of adding values` to the 2-3 t
 
 <img src="../assets/image-20230502071107392.png" alt="image-20230502071107392" style="zoom:80%;" /> 
 
+## New writing strategy
 
+> The `2-3 tree` is the mother of many trees, and many trees are inspired by the `2-3 tree`, but who invented it?
+>
+> It is too difficult to implement because the 2-3 tree is hard to `rebalance`. 
 
+In my opinion, these adjustments are necessary. 
 
+1. When I wrote `the 2-3 tree`, I wanted to `simulate it with slices` and `actively balance the 2-3 tree`.
+2. `The 2-3 tree` will pop up `the middle value` upwards, but I want to `change it` to pop up the values on `both sides`, because this can `rebalance the entire 2-3 tree structure easily`. 
+3.  I need to write a function to convert `the 2-3 tree into slices` and `the slices into the 2-3 tree`.
+4. During the conversion process, consider using a `position array` to replace the key node -> *node and `see if the performance will be better`.
 
-
+<img src="../assets/image-20230504135101016.png" alt="image-20230504135101016" style="zoom: 150%;" />
 
